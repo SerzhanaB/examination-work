@@ -1,18 +1,24 @@
 .header{
   height: 80px;
-   background-color:#e3f0b3;
+   background-color:#f0f1bb;
+   border: 1px solid;
  }
  
  .nav{
    float: left;
      width: 15%;
-     background-color:#9b8df8;
+     background-color:#f0f1bb;
      height: 100%;
      padding: 10 px;
  }
  .content{
    float: right;
    width: 85%;
-   background-color:#e68bc1;
+   background-color:#f0f1bb;
    height:100%;
+   border-left: 1px solid;
  }
+
+ body {
+  background-color:#f0f1bb;
+}

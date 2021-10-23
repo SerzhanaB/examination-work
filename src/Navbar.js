@@ -26,6 +26,9 @@ class NavBar extends Component {
         <p>
           <a href="/issues">Обращения</a>
         </p>
+        <p>
+        <a href ="/newIssue">Новое обращение</a>
+        </p>
       </div>
     );
   }

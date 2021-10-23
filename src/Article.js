@@ -44,7 +44,7 @@ class Article extends PureComponent {
               onClick={onButtonClick}
               className="btn btn-secondary btn-sm float-right"
             >
-              {isOpen ? "Close" : "Open"}
+              {isOpen ? "Закрыть" : "Открыть"}
             </button>
           </h2>
         </div>
