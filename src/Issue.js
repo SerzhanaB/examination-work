@@ -3,9 +3,10 @@ import React, { PureComponent } from "react";
 import Comments from "./comments";
 import IssueEdit from "./issueEdit";
 
-
 let newValue = [];
-const myToken=atob("Z2hwX1RRcjhEV3V5aWJIaEJCcXVLWVJLT25MQ1VsQ094UzBTdUo1Qg==");
+const myToken = atob(
+  "Z2hwX1RRcjhEV3V5aWJIaEJCcXVLWVJLT25MQ1VsQ094UzBTdUo1Qg=="
+);
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -20,31 +21,30 @@ class Issue extends PureComponent {
       error: "",
       count: 0,
       reverted: false,
-      
-      
     };
   }
 
   componentDidMount() {}
-  componentWillUpdate() {console.log("will update");}
+  componentWillUpdate() {
+    console.log("will update");
+  }
 
   handleCloseIssue(id) {
     const body = { state: "closed" };
-    fetch('https://api.github.com/repos/SerzhanaB/exam/issues/'+id, {
+    fetch("https://api.github.com/repos/SerzhanaB/exam/issues/" + id, {
       body: JSON.stringify(body),
       headers: {
-        Authorization: 'token '+ myToken,
+        Authorization: "token " + myToken,
       },
-      method: 'PATCH',
+      method: "PATCH",
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log("closed",result);
+        console.log("closed", result);
       });
-     
   }
 
-/*
+  /*
   handleClickEdit() {
     const body = { body: newValue};
     fetch("https://api.github.com/repos/SerzhanaB/exam/issues/18/comments", {
@@ -73,7 +73,7 @@ class Issue extends PureComponent {
     const body = isOpen && (
       <section className="card-text">
         <p>
-          Статус:&nbsp; 
+          Статус:&nbsp;
           {article.state === "open" ? (
             <span>Открыто</span>
           ) : (
@@ -87,21 +87,20 @@ class Issue extends PureComponent {
               src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU=s180-rw"
               width="30px"
               height="30px"
-            />  </a>
-           </p> 
+            />{" "}
+          </a>
+        </p>
         <p>
           Описание обращения:
-          {article.state==="open" && <IssueEdit id={article.number}/>}
+          {article.state === "open" && <IssueEdit id={article.number} body={article.body} />}
           {article.body === "null" ? (
             <span></span>
           ) : (
             <span> {article.body}</span>
-          )} 
-          
-          
+          )}
           &nbsp;
         </p>
-       
+
         <div>Последнее обновление: {article.updated_at}</div>
         <Comments id={article.number} />
       </section>
@@ -119,9 +118,16 @@ class Issue extends PureComponent {
               {isOpen ? "Свернуть" : "Раскрыть"}
             </button>
             &nbsp;
-           { article.state==="open" && <button className="btn btn-secondary btn-sm float-right" onClick={()=>{this.handleCloseIssue(article.number)}}>
-              Закрыть запрос
-            </button>}
+            {article.state === "open" && (
+              <button
+                className="btn btn-secondary btn-sm float-right"
+                onClick={() => {
+                  this.handleCloseIssue(article.number);
+                }}
+              >
+                Закрыть запрос
+              </button>
+            )}
           </h2>
         </div>
         <div className="card-body">

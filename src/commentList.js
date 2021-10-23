@@ -2,7 +2,9 @@ import React, { PureComponent } from "react";
 import "./App.css";
 import Comment from "./Comment";
 
-const myToken=atob("Z2hwX1RRcjhEV3V5aWJIaEJCcXVLWVJLT25MQ1VsQ094UzBTdUo1Qg==");
+const myToken = atob(
+  "Z2hwX1RRcjhEV3V5aWJIaEJCcXVLWVJLT25MQ1VsQ094UzBTdUo1Qg=="
+);
 let newComment = [];
 class CommentList extends PureComponent {
   constructor(props) {
@@ -19,18 +21,19 @@ class CommentList extends PureComponent {
     const bod = { body: newComment };
     console.log("сохранить коммент", this.props.id);
     fetch(
-      "https://api.github.com/repos/SerzhanaB/exam/issues/" +this.props.id +"/comments",
+      "https://api.github.com/repos/SerzhanaB/exam/issues/" +
+        this.props.id +
+        "/comments",
       {
         body: JSON.stringify(bod),
         headers: {
-          Authorization: 'token '+ myToken,
+          Authorization: "token " + myToken,
         },
         method: "POST",
       }
     )
       .then((res) => res.json())
       .then((result) => {
-    
         console.log("коммент", result);
       });
   }
@@ -65,15 +68,14 @@ class CommentList extends PureComponent {
         />
         <button
           className="btn btn-secondary btn-sm float-right"
-          onClick={()=>this.handleClickSave(this.props)}
-        >        
-            <img
-              src="https://cdn.icon-icons.com/icons2/936/PNG/512/save-file-option_icon-icons.com_73423.png"
-              width="20px"
-              height="20px"
-            /> &nbsp;
-            Cохранить коммент
-       
+          onClick={() => this.handleClickSave(this.props)}
+        >
+          <img
+            src="https://cdn.icon-icons.com/icons2/936/PNG/512/save-file-option_icon-icons.com_73423.png"
+            width="20px"
+            height="20px"
+          />{" "}
+          &nbsp; Cохранить коммент
         </button>
       </div>
     );

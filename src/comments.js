@@ -37,7 +37,7 @@ componentDidMount(props) {
           </h1>
             <button className="btn btn-secondary btn-sm float-right" onClick={this.revert}>Обратный порядок</button>
             &nbsp;
-            <button  className="btn btn-secondary btn-sm float-right">+</button>
+            
         </div>
         <CommentList
           articles={this.state.reverted ? articles.slice().reverse() : articles} id={this.props.id}
