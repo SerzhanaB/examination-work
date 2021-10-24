@@ -4,7 +4,7 @@ import React, { Component } from "react";
 let newTitle = [];
 let description = [];
 const myToken = atob(
-  "Z2hwX1RRcjhEV3V5aWJIaEJCcXVLWVJLT25MQ1VsQ094UzBTdUo1Qg=="
+  "Z2hwX21OWWFNdmhybnFmd3NpTWhKdlN0N3d5MUV1bnRFbzIyUnN0aQ=="
 );
 class NewIssue extends Component {
   handleClick() {

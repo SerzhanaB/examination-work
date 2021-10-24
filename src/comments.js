@@ -13,19 +13,28 @@ class Comments extends PureComponent {
          reverted: false,
     }
 }
+getComments(){
+  fetch("https://api.github.com/repos/SerzhanaB/exam/issues/"+this.props.id+"/comments")
+  .then(res => res.json())
+  .then(
+    (result) => {
+      this.setState({
+        comments: result,
+      });
+      // Проверяем, что получили
+      console.log(this.state.comments);
+    },
+  )
+
+}
 
 componentDidMount(props) {
-    fetch("https://api.github.com/repos/SerzhanaB/exam/issues/"+this.props.id+"/comments")
-    .then(res => res.json())
-    .then(
-      (result) => {
-        this.setState({
-          comments: result,
-        });
-        // Проверяем, что получили
-        console.log(this.state.comments);
-      },
-    )
+    this.getComments();
+}
+
+componentDidUpdate(props) {
+  this.getComments();
+
 }
   render() {
      const articles = this.state.comments.slice();

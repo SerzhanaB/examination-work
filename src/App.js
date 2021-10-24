@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React, { PureComponent } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Card1 from "./card1";
 import Card10 from "./card10";
 import Card11 from "./card11";
@@ -24,6 +24,7 @@ import Materials from "./materials";
 import NavBar from "./Navbar";
 import NewComment from "./NewComment";
 import NewIssue from "./NewIssue";
+import PageNotFound from  "./404-page"
 
 class App extends PureComponent {
   render() {
@@ -37,80 +38,81 @@ class App extends PureComponent {
             <nav className="nav">
               <NavBar />
             </nav>
+            <div className="content">
             <Switch>
-              <div className="content">
+          
                 <Route exact path="/" component={Cards}>
                   <Cards />
                 </Route>
-                <Route path="/card1">
+                <Route exact path="/card1">
                   <Card1 />
                 </Route>
-                <Route path="/card2">
+                <Route exact path="/card2">
                   <Card2 />
                 </Route>
-                <Route path="/card3">
+                <Route exact path="/card3">
                   <Card3 />
                 </Route>
-                <Route path="/card4">
+                <Route exact path="/card4">
                   <Card4 />
                 </Route>
-                <Route path="/card4">
+                <Route exact path="/card4">
                   <Card4 />
                 </Route>
-                <Route path="/card5">
+                <Route exact path="/card5">
                   <Card5 />
                 </Route>
-                <Route path="/card6">
+                <Route exact path="/card6">
                   <Card6 />
                 </Route>
-                <Route path="/card7">
+                <Route exact path="/card7">
                   <Card7 />
                 </Route>
-                <Route path="/card8">
+                <Route exact path="/card8">
                   <Card8 />
                 </Route>
-                <Route path="/card9">
+                <Route exact path="/card9">
                   <Card9 />
                 </Route>
-                <Route path="/card10">
+                <Route exact path="/card10">
                   <Card10 />
                 </Route>
-                <Route path="/card11">
+                <Route exact path="/card11">
                   <Card11 />
                 </Route>
-                <Route path="/card12">
+                <Route exact path="/card12">
                   <Card12 />
                 </Route>
-                <Route path="/card13">
+                <Route exact path="/card13">
                   <Card13 />
                 </Route>
-                <Route path="/card14">
+                <Route exact path="/card14">
                   <Card14 />
                 </Route>
-                <Route path="/card15">
+                <Route exact path="/card15">
                   <Card15 />
                 </Route>
-                <Route path="/materials" component={Materials}>
+                <Route exact path="/materials" component={Materials}>
                   <Materials />
                 </Route>
-                <Route path="/feedback" component={Feedback}>
+                <Route exact path="/feedback" component={Feedback}>
                   <Feedback />
                 </Route>
                 <Route path="/issues">
                   <Issues />
                 </Route>
-                <Route path="/newIssue">
+                <Route exact path="/newIssue">
                   <NewIssue />
                 </Route>
-                <Route path="/issues/comments">
+                <Route exact path="/issues/comments">
                   <Comments />
                 </Route>
-
-                <Route path="/newComment">
+                <Route exact path="/newComment">
                   <NewComment />
                 </Route>
-              </div>
+                <Route  component={PageNotFound} />
             </Switch>
+            </div>
           </body>
         </div>
       </Router>

@@ -3,7 +3,7 @@ import "./App.css";
 import Comment from "./Comment";
 
 const myToken = atob(
-  "Z2hwX1RRcjhEV3V5aWJIaEJCcXVLWVJLT25MQ1VsQ094UzBTdUo1Qg=="
+  "Z2hwX21OWWFNdmhybnFmd3NpTWhKdlN0N3d5MUV1bnRFbzIyUnN0aQ=="
 );
 let newComment = [];
 class CommentList extends PureComponent {

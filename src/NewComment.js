@@ -2,6 +2,9 @@ import "bootstrap/dist/css/bootstrap.css";
 import React, { Component } from "react";
 let newTitle = [];
 let description = [];
+const myToken = atob(
+  "Z2hwX21OWWFNdmhybnFmd3NpTWhKdlN0N3d5MUV1bnRFbzIyUnN0aQ=="
+);
 
 class NewIssue extends Component {
   handleClick() {
@@ -9,7 +12,7 @@ class NewIssue extends Component {
     fetch("https://api.github.com/repos/SerzhanaB/exam/issues", {
       body: JSON.stringify(bod),
       headers: {
-        Authorization: "token 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",
+        Authorization:  "token " + myToken,
       },
       method: "POST",
     })

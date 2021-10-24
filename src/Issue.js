@@ -5,7 +5,7 @@ import IssueEdit from "./issueEdit";
 
 let newValue = [];
 const myToken = atob(
-  "Z2hwX1RRcjhEV3V5aWJIaEJCcXVLWVJLT25MQ1VsQ094UzBTdUo1Qg=="
+  "Z2hwX21OWWFNdmhybnFmd3NpTWhKdlN0N3d5MUV1bnRFbzIyUnN0aQ=="
 );
 
 function sleep(ms) {
@@ -92,13 +92,8 @@ class Issue extends PureComponent {
         </p>
         <p>
           Описание обращения:
-          {article.state === "open" && <IssueEdit id={article.number} body={article.body} />}
-          {article.body === "null" ? (
-            <span></span>
-          ) : (
-            <span> {article.body}</span>
-          )}
-          &nbsp;
+          {article.state === "open" ? <IssueEdit id={article.number} body={article.body} /> : article.body }
+         
         </p>
 
         <div>Последнее обновление: {article.updated_at}</div>

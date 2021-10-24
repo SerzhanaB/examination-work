@@ -12,16 +12,29 @@ class Issues extends PureComponent {
       reverted: false,
     };
   }
-  componentDidMount() {
+
+  getIssues=()=>{
     fetch("https://api.github.com/repos/SerzhanaB/exam/issues?state=all")
-      .then((res) => res.json())
-      .then((result) => {
-        this.setState({
-          issues: result,
-        });
-        console.log(this.state.issues);
+    .then((res) => res.json())
+    .then((result) => {
+      this.setState({
+        issues: result,
       });
+      console.log(this.state.issues);
+    });
+
   }
+  componentDidMount() {
+   this.getIssues();
+  }
+
+  componentDidUpdate() {
+    this.getIssues();
+
+  }
+
+
+
   render() {
     const articles = this.state.issues.slice();
     return (

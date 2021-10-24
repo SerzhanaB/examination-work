@@ -1,9 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React, { PureComponent } from "react";
 
-const myToken = atob(
-  "Z2hwX1RRcjhEV3V5aWJIaEJCcXVLWVJLT25MQ1VsQ094UzBTdUo1Qg=="
-);
+const myToken = atob("Z2hwX21OWWFNdmhybnFmd3NpTWhKdlN0N3d5MUV1bnRFbzIyUnN0aQ==");
 //const value={this.props.body};
 let newValue = [];
 class IssueEdit extends PureComponent {
@@ -11,6 +9,7 @@ class IssueEdit extends PureComponent {
     super(props);
     this.state = {
       showMode: false,
+      newbody: this.props.body,
     };
   }
 
@@ -19,7 +18,7 @@ class IssueEdit extends PureComponent {
   }
 
   handleClickSave(id) {
-    const body = { body: newValue };
+    const body = { body: this.state.newbody };
     fetch("https://api.github.com/repos/SerzhanaB/exam/issues/" + id, {
       body: JSON.stringify(body),
       headers: {
@@ -29,18 +28,18 @@ class IssueEdit extends PureComponent {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log("closed", result);
+        console.log( result);
       });
     this.setState({ showMode: !this.state.showMode });
   }
   handlerTitle(e) {
-    newValue = e.target.value;
-    console.log(newValue);
-    return newValue;
+    this.setState({newbody: e.target.value});
+ 
   }
 
   render() {
-    let  value={this.props.body};
+ //   let  value=[];
+ //this.setState({newbody: this.props.body})
     return (
       <span>
         <img
@@ -51,12 +50,12 @@ class IssueEdit extends PureComponent {
             this.handleClickEdit();
           }}
         />
-        {this.state.showMode === true && (
+        {this.state.showMode === true ? (
           <div>
             <textarea
               
               class="form-control"
-              value={this.props.body}
+            value={this.state.newbody}
               onChange={(e) => {
                 this.handlerTitle(e);
               }}
@@ -75,7 +74,9 @@ class IssueEdit extends PureComponent {
               &nbsp;Cохранить обращение
             </button>
           </div>
-        )}
+        )
+      : this.props.body
+      }
       </span>
     );
   }
